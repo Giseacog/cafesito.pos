@@ -13,3 +13,14 @@ export const register = async (req: Request, resp: Response) => {
   if (error) return resp.status(400).json({ error: error.message });
   return resp.status(201).json({ data: data });
 };
+
+export const login = async (req: Request, resp: Response) => {
+  const { email, password } = req.body;
+
+  const { data, error } = await supabase.auth.signInWithPassword({
+    email,
+    password,
+  });
+  if (error) return resp.status(400).json({ error: error.message });
+  return resp.status(201).json({ data: data });
+};
