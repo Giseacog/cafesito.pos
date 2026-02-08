@@ -1,0 +1,37 @@
+<div class="auth-container">
+  <div class="auth">
+    <h1>Cafesito</h1>
+    <p>Create your account</p>
+
+    <form (ngSubmit)="onSubmit()" #registerForm="ngForm">
+      <label>Username</label>
+      <input
+        type="text"
+        name="username"
+        [(ngModel)]="username"
+        required
+        placeholder="Your username"
+      />
+
+      <label>Email</label>
+      <input
+        type="email"
+        name="email"
+        [(ngModel)]="email"
+        required
+        placeholder="you@email.com"
+      />
+
+      <label>Password</label>
+      <input
+        type="password"
+        name="password"
+        [(ngModel)]="password"
+        required
+        placeholder="********"
+      />
+
+      <button type="submit" [disabled]="registerForm.invalid">Register</button>
+    </form>
+  </div>
+</div>

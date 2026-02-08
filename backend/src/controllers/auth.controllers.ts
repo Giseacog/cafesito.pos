@@ -2,12 +2,12 @@ import { Request, Response } from "express";
 import { supabase } from "../lib/supabase";
 
 export const register = async (req: Request, resp: Response) => {
-  const { email, password, role } = req.body;
+  const { username, email, password } = req.body;
 
   const { data, error } = await supabase.auth.signUp({
     email,
     password,
-    options: { data: { role } },
+    options: { data: { role: "collaborator", username } },
   });
 
   if (error) return resp.status(400).json({ error: error.message });

@@ -10,7 +10,7 @@ dotenv.config();
 
 //Esto es por su seguridad, porque hay diferentes dominios
 const corsOptions = {
-  origin: ["http://localhost"],
+  origin: ["http://localhost:4200"], //el back da acceso para el front (PUERTO EN EL QUE CORRE)
   methods: ["GET", "POST", "DELETE", "PUT", "PATCH"],
   allowheaders: ["Content-Type", "Authorization"],
   credentials: true,
