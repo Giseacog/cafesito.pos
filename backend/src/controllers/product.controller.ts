@@ -2,11 +2,11 @@ import { Request, Response } from "express";
 import { supabase } from "../lib/supabase";
 import { User } from "../models/user.model";
 
-export const addProduct = async (
-  req: Request & { user: User },
-  resp: Response
-) => {
-  const user = req.user;
+export const addProduct = async (req: Request, resp: Response) => {
+  const user = (req as any).user;
+
+  console.log("
+    ", user);
 
   const { name, price } = req.body;
 
