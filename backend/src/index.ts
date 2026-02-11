@@ -2,6 +2,7 @@ import express from "express";
 import cors from "cors";
 import dotenv from "dotenv";
 import authRouter from "./routes/auth.routes";
+import productRouter from "./routes/product.routes";
 
 const app = express();
 
@@ -19,7 +20,7 @@ const corsOptions = {
 app.use(cors(corsOptions));
 
 app.use("/api/auth", authRouter);
-
+app.use("/api/product", productRouter);
 const port = process.env.PORT || 4000;
 
 app.listen(port, () => {
