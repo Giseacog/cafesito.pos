@@ -8,3 +8,9 @@ export interface LoginFormValues {
   email: string;
   password: string;
 }
+
+export interface ProductFormValues {
+  name: string;
+  price: number;
+  quantity: number;
+}

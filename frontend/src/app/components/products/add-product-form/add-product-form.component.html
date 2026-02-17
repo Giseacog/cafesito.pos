@@ -1,0 +1,22 @@
+<div>
+  <h1>Agrega tus productos</h1>
+
+  <form [formGroup]="productForm" (ngSubmit)="onSubmit()">
+    <label>
+      Nombre
+      <input type="text" formControlName="name" />
+    </label>
+
+    <label>
+      Precio
+      <input type="number" formControlName="price" />
+    </label>
+
+    <label>
+      Cantidad
+      <input type="number" formControlName="quantity" />
+    </label>
+
+    <button type="submit" [disabled]="productForm.invalid">Guardar</button>
+  </form>
+</div>

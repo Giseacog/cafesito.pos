@@ -1,9 +1,9 @@
 import express from "express";
-import { addProduct } from "../controllers/product.controller";
+import { addProduct, getProducts } from "../controllers/product.controller";
 import { verifyToken } from "../middleware/auth.middleware";
 
-
 const router = express.Router();
-router.post("/add",verifyToken, addProduct);
+router.post("/add", verifyToken, addProduct);
+router.get("/get", getProducts);
 
 export default router;
