@@ -16,11 +16,11 @@ export class LoginComponent {
   constructor(private authService: AuthService) {}
 
   onSubmit() {
-    const data = {
+    const formValues = {
       email: this.email,
       password: this.password,
     };
 
-    this.authService.login(data);
+    this.authService.login(formValues);
   }
 }

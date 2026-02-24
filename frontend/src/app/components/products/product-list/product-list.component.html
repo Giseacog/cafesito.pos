@@ -1,0 +1,10 @@
+<ul class="container-product-list">
+  @if (productsResponse?.data?.length) { @for (product of productsResponse.data;
+  track product._id){
+  <li>
+    <app-product-card [product]="product"></app-product-card>
+  </li>
+  } } @else {
+  <p>Cargando productos...</p>
+  }
+</ul>

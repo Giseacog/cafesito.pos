@@ -1,0 +1,26 @@
+.content-navbar {
+  display: flex;
+  align-items: center;
+  gap: 80px;
+  background-color: #222222;
+  height: 400px;
+  width: 400px;
+  border-radius: 20px;
+  font-weight: 600px;
+  font-size: 18px;
+
+  ul {
+    list-style: none;
+  }
+  a {
+    text-decoration: none;
+    color: #fffaf3;
+  }
+  a:hover {
+    color: #e4e5e2;
+  }
+  img {
+    width: 100px;
+    height: 100px;
+  }
+}
