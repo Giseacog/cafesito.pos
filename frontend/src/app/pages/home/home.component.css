@@ -1,0 +1,9 @@
+.container-home {
+  margin: 0;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #f5e6d3, #715f4b);
+  font-family: "Poppins", sans-serif;
+}

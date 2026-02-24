@@ -1,21 +1,21 @@
-<div>
-  <h1>Agrega tus productos</h1>
+<div class="add-product-form">
+  <h1 class="title">Agrega tus productos</h1>
 
-  <form [formGroup]="productForm" (ngSubmit)="onSubmit()">
-    <label>
-      Nombre
+  <form [formGroup]="productForm" (ngSubmit)="onSubmit()" class="product-form">
+    <div class="form-group">
+      <label>Nombre</label>
       <input type="text" formControlName="name" />
-    </label>
+    </div>
 
-    <label>
-      Precio
+    <div class="form-group">
+      <label>Precio</label>
       <input type="number" formControlName="price" />
-    </label>
+    </div>
 
-    <label>
-      Cantidad
+    <div class="form-group">
+      <label>Cantidad</label>
       <input type="number" formControlName="quantity" />
-    </label>
+    </div>
 
     <button type="submit" [disabled]="productForm.invalid">Guardar</button>
   </form>

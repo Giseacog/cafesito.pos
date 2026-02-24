@@ -31,6 +31,11 @@ export class AuthService {
     const { error } = await supabase.auth.signUp({
       email: data.email,
       password: data.password,
+      options: {
+        data: {
+          role: 'collaborator',
+        },
+      },
     });
     if (error) {
       console.error(error.message);
@@ -54,18 +59,23 @@ export class AuthService {
   // }
 
   //Login
-  async login(data: LoginFormValues) {
-    const { error } = await supabase.auth.signInWithPassword({
-      email: data.email,
-      password: data.password,
+  async login(formValues: LoginFormValues) {
+    const { error, data } = await supabase.auth.signInWithPassword({
+      email: formValues.email,
+      password: formValues.password,
     });
+    console.log(data);
 
     if (error) {
       console.error(error.message);
       return;
     }
+    if ((data.user.user_metadata.role = 'collaborator')) {
+      this.router.navigate(['/sales']);
+      return;
+    }
 
-    this.router.navigate(['/']);
+    this.router.navigate(['/products']);
   }
 
   async logout() {

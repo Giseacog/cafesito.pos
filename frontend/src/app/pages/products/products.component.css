@@ -1,0 +1,11 @@
+.product-container {
+    min-height: 100vh;
+    background: linear-gradient(135deg, #f5e6d3, #715f4b);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 80px 20px;
+    font-family: "Noto Sans JP", sans-serif;
+  }
+  
