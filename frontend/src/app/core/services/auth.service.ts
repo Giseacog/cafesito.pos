@@ -64,22 +64,35 @@ export class AuthService {
       email: formValues.email,
       password: formValues.password,
     });
-    console.log(data);
 
     if (error) {
       console.error(error.message);
       return;
     }
-    if ((data.user.user_metadata.role = 'collaborator')) {
+
+    const { error: profilesError, data: profilesData } = await supabase
+      .from('profiles')
+      .select('*')
+      .eq('id', data.user.id)
+      .single();
+
+    if (profilesError) {
+      console.log(profilesError.message);
+      return;
+    }
+    localStorage.setItem('user', JSON.stringify(profilesData));
+    //YA LO HACE SUPABASE THANKS!!
+
+    if (profilesData.role === 'collaborator') {
       this.router.navigate(['/sales']);
       return;
     }
-
     this.router.navigate(['/products']);
   }
 
   async logout() {
     await supabase.auth.signOut();
+    localStorage.removeItem('user');
     this.router.navigate(['/login']);
   }
 
@@ -91,4 +104,6 @@ export class AuthService {
     const { data } = await supabase.auth.getUser();
     return data.user;
   }
+
+  
 }

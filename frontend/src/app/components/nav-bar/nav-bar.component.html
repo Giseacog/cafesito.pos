@@ -1,12 +1,18 @@
-<section class="navbar">
-  <div class="content-navbar">
+<section class="content-navbar">
+  <div class="navbar">
     <ul>
-      <img src="/frontend/public/user.png" alt="" />
-      <li><a routerLink="/login">Login</a></li>
+      <li><a routerLink="/">Home</a></li>
+      <li><a routerLink="/productos">Productos</a></li>
     </ul>
+    
     <ul>
-      <img src="/frontend/public/cafes.jpg" alt="" />
-      <li><a routerLink="/sales">Sales</a></li>
+      <li>
+        @if(isLoggedIn){
+          <button class="logout-button" (click)="logOut()">Cerrar Sesión</button>
+        } @else {
+          <a routerLink="/login" class="login-link">Login</a>
+        }
+      </li>
     </ul>
   </div>
 </section>

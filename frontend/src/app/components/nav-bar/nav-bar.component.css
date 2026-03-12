@@ -1,26 +1,73 @@
 .content-navbar {
+  width: 100%;
+  padding: 1.5rem 2rem;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background: radial-gradient(circle at top left, #f4efe6, #e8dcc8);
+}
+
+.navbar {
+  background: var(--warm-beige);
+  border: 3px solid var(--soft-brown);
+  border-radius: 50px;
+  padding: 0.5rem 2rem;
+  box-shadow: 6px 6px 0px var(--soft-brown);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.navbar ul {
+  list-style: none;
   display: flex;
   align-items: center;
-  gap: 80px;
-  background-color: #222222;
-  height: 400px;
-  width: 400px;
-  border-radius: 20px;
-  font-weight: 600px;
-  font-size: 18px;
+  gap: 2rem;
+  margin: 0;
+  padding: 0;
+}
 
-  ul {
-    list-style: none;
-  }
-  a {
-    text-decoration: none;
-    color: #fffaf3;
-  }
-  a:hover {
-    color: #e4e5e2;
-  }
-  img {
-    width: 100px;
-    height: 100px;
-  }
+.navbar li {
+  font-family: "Playfair Display", serif;
+  font-weight: 700;
+  color: var(--deep-brown);
+}
+
+.navbar a {
+  text-decoration: none;
+  color: var(--deep-brown);
+  font-size: 1.1rem;
+  transition: 0.3s;
+  padding: 5px 10px;
+  border-radius: 10px;
+}
+
+.navbar a:hover {
+  color: var(--terracotta-soft);
+  background: rgba(176, 137, 104, 0.1);
+}
+/* 
+/* Estilo para el Botón de Logout */
+.logout-button {
+  background-color: var(--terracotta-soft);
+  color: white;
+  border: 2px solid var(--deep-brown);
+  padding: 0.6rem 1.5rem;
+  border-radius: 25px;
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: 4px 4px 0px var(--deep-brown);
+  transition: 0.2s;
+}
+*/ .logout-button:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 6px 6px 0px var(--deep-brown);
+  background-color: var(--deep-brown);
+}
+
+.logout-button:active {
+  transform: translate(2px, 2px);
+  box-shadow: 0px 0px 0px var(--deep-brown);
 }
