@@ -21,6 +21,7 @@ app.use(cors(corsOptions));
 
 app.use("/api/auth", authRouter);
 app.use("/api/product", productRouter);
+
 const port = process.env.PORT || 4000;
 
 app.listen(port, () => {

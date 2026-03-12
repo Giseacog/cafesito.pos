@@ -1,12 +1,11 @@
 <div class="card">
-  <div class="price-badge">
-    ${{ product?.price }}
-  </div>
+  <div class="price-badge">${{ product?.price }}</div>
 
   <img src="" alt="" />
 
   <div class="card-content">
     <h3>{{ product?.name }}</h3>
     <p>Stock: {{ product?.quantity }}</p>
+    <button (click)="addProductToCart()">Agregar</button>
   </div>
 </div>
