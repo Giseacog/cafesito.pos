@@ -62,16 +62,38 @@ export const addProductToCart = async (req: Request, resp: Response) => {
       .eq("id", user.id);
   }
 
-  // 4. Ahora sí, agregamos el producto al carrito
-  const { data, error } = await supabase.from("cart_items").upsert({
-    cart_id: currentCartId,
-    product_id: productId,
-    quantity,
-  });
+  // 4. Agregamos el producto al carrito, verificando que el producto este en ese carrito
+  const { data: existingItem } = await supabase
+    .from("cart_items")
+    .select("id, quantity")
+    .eq("cart_id", currentCartId)
+    .eq("product_id", productId)
+    .maybeSingle();
 
-  if (error) return resp.status(401).json({ error });
+  if (existingItem) {
+    // Si ya existe, sumamos la cantidad nueva a la anterior
+    const { data, error } = await supabase
+      .from("cart_items")
+      .update({ quantity: existingItem.quantity + quantity })
+      .eq("id", existingItem.id)
+      .select();
 
-  return resp
-    .status(200)
-    .json({ data, message: "Producto agregado con éxito" });
+    if (error) return resp.status(400).json({ error });
+    return resp.status(200).json({ data, message: "Cantidad actualizada" });
+  } else {
+    // Si no existe, lo insertamos por primera vez
+    const { data, error } = await supabase
+      .from("cart_items")
+      .insert({
+        cart_id: currentCartId,
+        product_id: productId,
+        quantity,
+      })
+      .select();
+
+    if (error) return resp.status(400).json({ error });
+    return resp
+      .status(200)
+      .json({ data, message: "Producto agregado con éxito" });
+  }
 };

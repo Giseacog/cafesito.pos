@@ -64,7 +64,7 @@ export class AuthService {
       email: formValues.email,
       password: formValues.password,
     });
-
+    console.log(error);
     if (error) {
       console.error(error.message);
       return;
@@ -104,6 +104,4 @@ export class AuthService {
     const { data } = await supabase.auth.getUser();
     return data.user;
   }
-
-  
 }

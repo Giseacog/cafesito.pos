@@ -27,6 +27,8 @@ export class ProductsService {
   }
 
   getProducts() {
+    let numbersss = 2;
+    console.log(numbersss);
     return this.httpClient
       .get<any>(`${this.baseURL}/get`)
       .pipe(catchError((error) => throwError(() => new Error(error))));
